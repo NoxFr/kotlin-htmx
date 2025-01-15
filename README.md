@@ -23,3 +23,11 @@ Add `development=true` to `gradle.properties`
 *PS : run these commands in two distinct shells*
 
 Go [here](http://localhost:8080) to see UI
+
+Step 2
+-
+
+**Scoped branch : `step-2/libs-styling`**
+
+This branch add limited styling and libs we will use in this project
+See `Index.kt` file.
