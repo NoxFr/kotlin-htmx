@@ -3,6 +3,7 @@ package org.liksi.web.pages
 import beerListComponent
 import kotlinx.html.*
 import org.liksi.web.components.beerCreationForm
+import org.liksi.web.components.footerComponent
 import org.liksi.web.components.headerComponent
 
 fun HTML.index() {
@@ -23,6 +24,7 @@ fun HTML.index() {
             beerCreationForm()
             br()
             beerListComponent()
+            footerComponent()
         }
     }
 }
