@@ -1,9 +1,10 @@
-package org.liksi.web.components
-
 import kotlinx.html.*
 import org.liksi.api.BeerService
+import org.liksi.web.components.beerItemComponent
 
-fun DIV.beerListComponent(beerService: BeerService) {
+private val beerService = BeerService()
+
+fun DIV.beerListComponent() {
     div {
         classes = setOf("bg-white shadow-md rounded-lg p-6")
         h2 {
@@ -14,11 +15,8 @@ fun DIV.beerListComponent(beerService: BeerService) {
         ul {
             classes = setOf("space-y-2")
             beerService.getAllBeers().forEach { beer ->
-                li {
-                    classes = setOf("border-b pb-2")
-                    beerItemComponent(beer)
-                }
+                beerItemComponent(beer)
             }
         }
     }
-} 
+}

@@ -1,11 +1,8 @@
 package org.liksi.web.pages
 
+import beerListComponent
 import kotlinx.html.*
-import org.liksi.api.BeerService
-import org.liksi.web.components.HEADER
-import org.liksi.web.components.beerListComponent
-
-private val beerService = BeerService()
+import org.liksi.web.components.headerComponent
 
 fun HTML.index() {
     head {
@@ -18,14 +15,7 @@ fun HTML.index() {
         div {
             classes = setOf("container mx-auto p-4")
             headerComponent()
-            beerListComponent(beerService)
+            beerListComponent()
         }
-    }
-}
-
-fun HEADER.headerComponent() {
-    h1 {
-        classes = setOf("text-4xl font-bold text-center text-blue-600 mb-6")
-        +"My wonderful application"
     }
 }
