@@ -19,6 +19,7 @@ fun DIV.beerCreationForm() {
             attributes["hx-post"] = "/add-beer"
             attributes["hx-target"] = "#beer-list"
             attributes["hx-swap"] = "outerHTML"
+            attributes["hx-ext"] = "json-enc"
             div {
                 classes = setOf("mb-4")
                 label {

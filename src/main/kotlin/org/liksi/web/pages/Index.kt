@@ -2,13 +2,14 @@ package org.liksi.web.pages
 
 import beerListComponent
 import kotlinx.html.*
-import org.liksi.web.components.headerComponent
 import org.liksi.web.components.beerCreationForm
+import org.liksi.web.components.headerComponent
 
 fun HTML.index() {
     head {
         title { +"Kotlin with HTMX" }
         script(src = "/webjars/htmx.org/2.0.4/dist/htmx.min.js") {}
+        script(src = "/webjars/htmx-ext-json-enc/2.0.2/dist/json-enc.min.js") {}
         script(src = "https://cdn.tailwindcss.com") {}
     }
     body {
