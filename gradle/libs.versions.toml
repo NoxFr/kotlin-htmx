@@ -1,9 +1,10 @@
-
 [versions]
 kotlin-version = "2.1.0"
 kotlinx-html-version = "0.11.0"
 ktor-version = "3.0.3"
 logback-version = "1.4.14"
+htmx-version = "2.0.4"
+tailwindcss-version = "4.0.14"
 
 [libraries]
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor-version" }
@@ -15,6 +16,8 @@ ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor-
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host-jvm", version.ref = "ktor-version" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-version" }
+htmx-org = { module = "org.webjars.npm:htmx.org", version.ref = "htmx-version" }
+tailwindcss = { module = "org.webjars.npm:tailwindcss", version.ref = "tailwindcss-version" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
