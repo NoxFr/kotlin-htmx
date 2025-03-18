@@ -1,5 +1,15 @@
 # Sources for the Tools in Action about Kotlin & HTMX
 
+The application is built using the following tech & fmks :
+- [kotlin](https://kotlinlang.org/)
+- [ktor](ktor.io)
+- [htmx](htmx.org)
+- [tailwindcss](https://tailwindcss.com/)
+
+
+This proof of concept aims to show the simplicity of the alliance of Kotlin + Htmx & Ktor to add a GUI on your API/Project or even build an app in couple hours.
+This project is organized following Git branches. You can navigate to diff using the [Pull requests](https://github.com/NoxFr/kotlin-htmx/pulls) declared.
+
 Step 1
 -
 
@@ -31,3 +41,40 @@ Step 2
 
 This branch add limited styling and libs we will use in this project
 See `Index.kt` file.
+
+Step 3
+-
+
+**Scoped branch : `step-3/add-api`**
+
+This branch add basic API in ktor to demonstrate the use case and use the service in the `Index.kt` file.
+See `api` package
+
+
+Step 4
+-
+
+**Scoped branch : `step-4/components`**
+
+This branch refactor the application to split logic into components.
+
+Step 5
+-
+
+**Scoped branch : `step-5/webjars`**
+
+This branch show the use of webjars for HTMX and style the application
+
+Step 6
+-
+
+**Scoped branch : `step-6/beer-details`**
+
+This branch add beer detail dialog component and API routing for beer details
+
+Step 7
+-
+
+**Scoped branch : `step-7/add-beer`**
+
+This final branch add form to create and add a new beer.
