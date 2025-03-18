@@ -1,6 +1,7 @@
 package org.liksi.web.components
 
 import kotlinx.html.*
+import org.liksi.api.model.BeerStyle
 
 fun DIV.beerCreationForm() {
     div {
@@ -15,6 +16,9 @@ fun DIV.beerCreationForm() {
         }
         form {
             classes = setOf("bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4")
+            attributes["hx-post"] = "/add-beer"
+            attributes["hx-target"] = "#beer-list"
+            attributes["hx-swap"] = "outerHTML"
             div {
                 classes = setOf("mb-4")
                 label {
@@ -31,11 +35,43 @@ fun DIV.beerCreationForm() {
                 classes = setOf("mb-4")
                 label {
                     classes = setOf("block text-yellow-700 text-sm font-bold mb-2")
-                    htmlFor = "beerType"
-                    +"Beer Type"
+                    htmlFor = "beerStyle"
+                    +"Beer Style"
                 }
-                input(type = InputType.text, name = "beerType") {
-                    id = "beerType"
+                select {
+                    id = "beerStyle"
+                    name = "beerStyle"
+                    classes = setOf("shadow appearance-none border rounded w-full py-2 px-3 text-yellow-700 leading-tight focus:outline-none focus:shadow-outline")
+                    option { value = ""; +"Select a style" }
+                    BeerStyle.entries.forEach { style ->
+                        option { value = style.name; +style.displayName }
+                    }
+                }
+            }
+            div {
+                classes = setOf("mb-4")
+                label {
+                    classes = setOf("block text-yellow-700 text-sm font-bold mb-2")
+                    htmlFor = "abv"
+                    +"ABV (%)"
+                }
+                input(type = InputType.number, name = "abv") {
+                    id = "abv"
+                    classes = setOf("shadow appearance-none border rounded w-full py-2 px-3 text-yellow-700 leading-tight focus:outline-none focus:shadow-outline")
+                    step = "0.1"
+                    min = "0"
+                    max = "100"
+                }
+            }
+            div {
+                classes = setOf("mb-4")
+                label {
+                    classes = setOf("block text-yellow-700 text-sm font-bold mb-2")
+                    htmlFor = "brewery"
+                    +"Brewery"
+                }
+                input(type = InputType.text, name = "brewery") {
+                    id = "brewery"
                     classes = setOf("shadow appearance-none border rounded w-full py-2 px-3 text-yellow-700 leading-tight focus:outline-none focus:shadow-outline")
                 }
             }
