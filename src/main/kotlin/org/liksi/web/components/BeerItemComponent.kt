@@ -5,7 +5,9 @@ import org.liksi.api.model.Beer
 
 fun UL.beerItemComponent(beer: Beer) {
     li {
-        classes = setOf("border-b-2 border-yellow-300 pb-4")
+        classes = setOf("border-b-2 border-yellow-300 pb-4 cursor-pointer hover:bg-yellow-100")
+        attributes["hx-get"] = "/beer/${beer.id}"
+        attributes["hx-target"] = "#beer-detail"
         div {
             classes = setOf("font-semibold text-yellow-900")
             +"${beer.name} "
