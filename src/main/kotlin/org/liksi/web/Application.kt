@@ -1,8 +1,10 @@
 package org.liksi.web
 
+import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
+import io.ktor.server.plugins.contentnegotiation.*
 import org.liksi.api.configureApiRouting
 
 fun main() {
@@ -11,6 +13,9 @@ fun main() {
 }
 
 fun Application.module() {
+    install(ContentNegotiation) {
+        json()
+    }
     configureRouting()
     configureApiRouting()
 }

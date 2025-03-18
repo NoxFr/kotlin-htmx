@@ -1,6 +1,7 @@
 package org.liksi.api
 
 import org.liksi.api.model.Beer
+import org.liksi.web.model.CreateBeer
 
 object BeerService {
     private val beers = mutableListOf(
@@ -15,8 +16,18 @@ object BeerService {
 
     fun getBeerById(id: Int): Beer? = beers.find { it.id == id }
 
-    fun addBeer(beer: Beer) {
-        val newId = (beers.maxOfOrNull { it.id } ?: 0) + 1
-        beers.add(0, beer.copy(id = newId))
+    fun addBeer(beer: Beer) = beers.add(beer)
+
+    fun addBeer(beer: CreateBeer) {
+        beers.add(
+            0,
+            Beer(
+                id = beers.size,
+                name = beer.beerName,
+                style = beer.beerStyle,
+                abv = beer.abv,
+                brewery = beer.brewery
+            )
+        )
     }
 }

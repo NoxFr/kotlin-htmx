@@ -1,18 +1,16 @@
 package org.liksi.web
 
 import beerListComponent
-import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.html.*
 import io.ktor.server.http.content.*
 import io.ktor.server.request.*
-import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.html.body
 import kotlinx.html.div
 import org.liksi.api.BeerService
-import org.liksi.api.model.Beer
 import org.liksi.web.components.beerDetailDialog
+import org.liksi.web.model.CreateBeer
 import org.liksi.web.pages.index
 
 fun Application.configureRouting() {
@@ -37,33 +35,7 @@ fun Application.configureRouting() {
             }
         }
         post("/add-beer") {
-            val receiveParameters = call.receiveParameters()
-            val beerName = receiveParameters["beerName"] ?: return@post call.respondText(
-                "Missing beer name",
-                status = HttpStatusCode.BadRequest
-            )
-            val beerStyle = receiveParameters["beerStyle"] ?: return@post call.respondText(
-                "Missing beer type",
-                status = HttpStatusCode.BadRequest
-            )
-            val abv = receiveParameters["abv"]?.toDoubleOrNull() ?: return@post call.respondText(
-                "Invalid ABV",
-                status = HttpStatusCode.BadRequest
-            )
-            val brewery = receiveParameters["brewery"] ?: return@post call.respondText(
-                "Missing brewery",
-                status = HttpStatusCode.BadRequest
-            )
-
-            BeerService.addBeer(
-                Beer(
-                    id = 0, // ID will be generated in the service
-                    style = beerStyle,
-                    name = beerName,
-                    abv = abv,
-                    brewery = brewery
-                )
-            )
+            BeerService.addBeer(call.receive<CreateBeer>())
             call.respondHtml {
                 body {
                     div {
