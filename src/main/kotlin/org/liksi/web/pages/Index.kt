@@ -1,6 +1,9 @@
 package org.liksi.web.pages
 
 import kotlinx.html.*
+import org.liksi.api.BeerService
+
+private val beerService = BeerService()
 
 fun HTML.index() {
     head {
@@ -20,12 +23,27 @@ fun HTML.index() {
                 classes = setOf("bg-white shadow-md rounded-lg p-6")
                 h2 {
                     classes = setOf("text-2xl font-semibold text-gray-800 mb-4")
-                    +"Un bloc de contenu"
+                    +"Liste des bières"
                 }
 
                 ul {
-                    for (n in 1..10) {
-                        li { +"$n" }
+                    classes = setOf("space-y-2")
+                    beerService.getAllBeers().forEach { beer ->
+                        li {
+                            classes = setOf("border-b pb-2")
+                            div {
+                                classes = setOf("font-medium")
+                                +"${beer.name} "
+                                span {
+                                    classes = setOf("text-gray-500 text-sm")
+                                    +"(${beer.abv}%)"
+                                }
+                            }
+                            div {
+                                classes = setOf("text-sm text-gray-600")
+                                +"Style: ${beer.style} | Brasserie: ${beer.brewery}"
+                            }
+                        }
                     }
                 }
             }
