@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
@@ -26,6 +25,8 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.kotlinx.html)
     implementation(libs.logback.classic)
+    implementation(libs.htmx.org)
+    implementation(libs.tailwindcss)
 
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
