@@ -15,6 +15,9 @@ fun HTML.index() {
         div {
             classes = setOf("container mx-auto p-4")
             headerComponent()
+            div {
+                id = "beer-detail"
+            }
             beerListComponent()
         }
     }
