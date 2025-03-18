@@ -2,7 +2,7 @@ package org.liksi.api
 
 import org.liksi.api.model.Beer
 
-class BeerService {
+object BeerService {
     private val beers = mutableListOf(
         Beer(1, "Chouffe", "Blonde belge", 8.0, "Achouffe"),
         Beer(2, "Westmalle Tripel", "Tripel", 9.5, "Abbaye de Westmalle"),
@@ -15,10 +15,8 @@ class BeerService {
 
     fun getBeerById(id: Int): Beer? = beers.find { it.id == id }
 
-    fun addBeer(beer: Beer): Beer {
+    fun addBeer(beer: Beer) {
         val newId = (beers.maxOfOrNull { it.id } ?: 0) + 1
-        val newBeer = beer.copy(id = newId)
-        beers += newBeer
-        return newBeer
+        beers.add(0, beer.copy(id = newId))
     }
 }
