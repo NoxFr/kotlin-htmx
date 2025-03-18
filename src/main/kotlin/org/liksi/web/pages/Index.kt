@@ -7,7 +7,7 @@ import org.liksi.web.components.headerComponent
 fun HTML.index() {
     head {
         title { +"Kotlin with HTMX" }
-        script(src = "https://unpkg.com/htmx.org@2.0.4") {}
+        script(src = "/webjars/htmx.org/2.0.4/dist/htmx.min.js") {}
         script(src = "https://cdn.tailwindcss.com") {}
     }
     body {
