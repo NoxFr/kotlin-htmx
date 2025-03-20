@@ -2,7 +2,6 @@ package org.liksi.web
 
 import io.ktor.server.application.*
 import io.ktor.server.html.*
-import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.html.body
 import kotlinx.html.h1
