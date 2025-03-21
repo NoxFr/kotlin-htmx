@@ -12,6 +12,7 @@ import org.liksi.api.BeerService
 import org.liksi.web.components.beerDetailDialog
 import org.liksi.web.model.CreateBeer
 import org.liksi.web.pages.index
+import kotlin.uuid.Uuid
 
 fun Application.configureRouting() {
     routing {
@@ -22,10 +23,10 @@ fun Application.configureRouting() {
             }
         }
         get("/beer/{id}") {
-            val id = requireNotNull(call.parameters["id"]?.toIntOrNull()) {
+            val id = requireNotNull(call.parameters["id"]) {
                 "Invalid beer ID"
             }
-            val beer = requireNotNull(BeerService.getBeerById(id)) {
+            val beer = requireNotNull(BeerService.getBeerById(Uuid.parse(id))) {
                 "Beer not found"
             }
             call.respondHtml {
@@ -46,7 +47,9 @@ fun Application.configureRouting() {
         }
 
         get("/beers") {
-            call.parameters.getAll("beerId")?.let { ids ->
+            call.parameters.getAll("beerId")
+                ?.map { Uuid.parse(it) }
+                ?.let { ids ->
                  BeerService.sort(ids)
             }
             call.respondHtml {

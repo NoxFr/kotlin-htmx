@@ -18,6 +18,12 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    compilerOptions {
+        freeCompilerArgs = listOf("-opt-in=kotlin.uuid.ExperimentalUuidApi")
+    }
+}
+
 dependencies {
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.html.builder)
