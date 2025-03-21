@@ -29,6 +29,7 @@ dependencies {
     implementation(libs.htmx)
     implementation(libs.htmx.json.enc)
     implementation(libs.tailwindcss)
+    implementation(libs.sortablejs)
 
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)

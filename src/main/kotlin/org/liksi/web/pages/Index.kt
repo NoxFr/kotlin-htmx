@@ -11,7 +11,56 @@ fun HTML.index() {
         title { +"Kotlin with HTMX" }
         script(src = "/webjars/htmx.org/2.0.4/dist/htmx.min.js") {}
         script(src = "/webjars/htmx-ext-json-enc/2.0.2/dist/json-enc.min.js") {}
+        script(src = "/webjars/sortablejs/1.15.6/Sortable.js") {}
         script(src = "https://cdn.tailwindcss.com") {}
+        script(type = ScriptType.textJavaScript) {
+            unsafe {
+                raw(
+                    """
+                    htmx.onLoad(function(content) {
+                        var sortables = content.querySelectorAll(".sortable");
+                        for (var i = 0; i < sortables.length; i++) {
+                          var sortable = sortables[i];
+                          var sortableInstance = new Sortable(sortable, {
+                              animation: 150,
+                              ghostClass: 'bg-yellow-200',
+                              dragClass: 'shadow-lg',
+                              delay: 150,
+                              delayOnTouchOnly: true,
+                              touchStartThreshold: 5,
+
+                              // Make the `.htmx-indicator` unsortable
+                              filter: ".htmx-indicator",
+                              onMove: function (evt) {
+                                return evt.related.className.indexOf('htmx-indicator') === -1;
+                              },
+
+                              // Disable sorting on the `end` event
+                              onEnd: function (evt) {
+                                this.option("disabled", true);
+                                
+                                // Affiche un indicateur visuel de réussite
+                                if (evt.oldIndex !== evt.newIndex) {
+                                  var movedElement = evt.item;
+                                  movedElement.classList.add('bg-green-100');
+                                  setTimeout(function() {
+                                    movedElement.classList.remove('bg-green-100');
+                                  }, 1000);
+                                }
+                              }
+                          });
+
+                          // Re-enable sorting on the `htmx:afterSwap` event
+                          sortable.addEventListener("htmx:afterSwap", function() {
+                            sortableInstance.option("disabled", false);
+                          });
+                        }
+                    })
+                    
+                """.trimIndent()
+                )
+            }
+        }
     }
     body {
         classes = setOf("bg-gray-100 flex items-center justify-center min-h-screen")
@@ -22,7 +71,6 @@ fun HTML.index() {
                 id = "beer-detail"
             }
             beerCreationForm()
-            br()
             beerListComponent()
             footerComponent()
         }

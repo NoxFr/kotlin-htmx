@@ -6,6 +6,7 @@ logback-version = "1.4.14"
 htmx-version = "2.0.4"
 htmx-json-enc-version = "2.0.2"
 tailwindcss-version = "4.0.14"
+sortablejs-version = "1.15.6"
 
 [libraries]
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor-version" }
@@ -20,6 +21,7 @@ kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version
 htmx = { module = "org.webjars.npm:htmx.org", version.ref = "htmx-version" }
 htmx-json-enc = { module = "org.webjars.npm:htmx-ext-json-enc", version.ref = "htmx-json-enc-version" }
 tailwindcss = { module = "org.webjars.npm:tailwindcss", version.ref = "tailwindcss-version" }
+sortablejs = { module = "org.webjars.npm:sortablejs", version.ref = "sortablejs-version" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }

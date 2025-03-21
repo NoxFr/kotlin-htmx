@@ -18,6 +18,18 @@ object BeerService {
 
     fun addBeer(beer: Beer) = beers.add(beer)
 
+    fun sort(ids: List<String>) {
+        // Trier les bières selon l'ordre des IDs, puis ajouter celles qui ne sont pas dans la liste
+        val orderedList = ids.mapNotNull { id -> 
+            beers.find { it.id.toString() == id } 
+        } + beers.filter { beer -> 
+            !ids.contains(beer.id.toString()) 
+        }
+        
+        beers.clear()
+        beers.addAll(orderedList)
+    }
+
     fun addBeer(beer: CreateBeer) {
         beers.add(
             0,

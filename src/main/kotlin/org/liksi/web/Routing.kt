@@ -44,6 +44,19 @@ fun Application.configureRouting() {
                 }
             }
         }
+
+        get("/beers") {
+            call.parameters.getAll("beerId")?.let { ids ->
+                 BeerService.sort(ids)
+            }
+            call.respondHtml {
+                body {
+                    div {
+                        beerListComponent()
+                    }
+                }
+            }
+        }
     }
 }
 
