@@ -56,6 +56,17 @@ fun HTML.index() {
                           });
                         }
                     })
+
+                     // Pour fermer le dialogue lorsqu'on clique en dehors
+                    document.addEventListener('click', function(event) {
+                      var dialog = document.getElementById('beer-detail');
+                      if (dialog && dialog.hasAttribute('open')) {
+                        var dialogContent = dialog.querySelector('div:nth-child(2)');
+                        if (dialogContent && !dialogContent.contains(event.target)) {
+                          dialog.removeAttribute('open');
+                        }
+                      }
+                    });
                     
                 """.trimIndent()
                 )

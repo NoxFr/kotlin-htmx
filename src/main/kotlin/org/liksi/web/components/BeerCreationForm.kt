@@ -30,6 +30,7 @@ fun DIV.beerCreationForm() {
                 input(type = InputType.text, name = "beerName") {
                     id = "beerName"
                     classes = setOf("shadow appearance-none border rounded w-full py-2 px-3 text-yellow-700 leading-tight focus:outline-none focus:shadow-outline")
+                    placeholder = "Enter beer name"
                 }
             }
             div {
@@ -62,6 +63,7 @@ fun DIV.beerCreationForm() {
                     step = "0.1"
                     min = "0"
                     max = "100"
+                    placeholder = "5.0"
                 }
             }
             div {
@@ -74,6 +76,7 @@ fun DIV.beerCreationForm() {
                 input(type = InputType.text, name = "brewery") {
                     id = "brewery"
                     classes = setOf("shadow appearance-none border rounded w-full py-2 px-3 text-yellow-700 leading-tight focus:outline-none focus:shadow-outline")
+                    placeholder = "Enter brewery name"
                 }
             }
             div {

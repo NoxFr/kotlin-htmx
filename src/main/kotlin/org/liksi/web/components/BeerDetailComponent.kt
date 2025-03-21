@@ -7,13 +7,13 @@ fun FlowContent.beerDetailDialog(beer: Beer) {
 
     dialog {
         attributes["open"] = "true"
-        id = "beer-detail-dialog"
+        id = "beer-detail"
         div {
-            classes = setOf("fixed inset-0 bg-gray-600 bg-opacity-50")
+            classes = setOf("fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center")
         }
         div {
-            classes = setOf("bg-yellow-50 shadow-lg rounded-lg p-8 border-t-4 border-yellow-500")
-            style = "width: 500px; max-height: 80vh; overflow-y: auto; z-index: 10; position: relative;"
+            classes = setOf("bg-yellow-50 shadow-lg rounded-lg p-8 border-t-4 border-yellow-500 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2")
+            style = "width: 500px; max-height: 80vh; overflow-y: auto; z-index: 10;"
             h2 {
                 classes = setOf("text-3xl font-bold text-yellow-800 mb-6 flex items-center")
                 i(classes = "fas fa-beer mr-2") {}
