@@ -6,11 +6,12 @@ The application is built using the following tech & fmks :
 - [htmx](htmx.org)
 - [tailwindcss](https://tailwindcss.com/)
 
-
 This proof of concept aims to show the simplicity of the alliance of Kotlin + Htmx & Ktor to add a GUI on your API/Project or even build an app in couple hours.
 This project is organized following Git branches. 
 
 You can navigate to diff using the [Pull requests](https://github.com/NoxFr/kotlin-htmx/pulls) declared or you can jump directly on last branch [step-7/add-beer](https://github.com/NoxFr/kotlin-htmx/tree/step-7/add-beer/src/main/kotlin/org/liksi) to see final version.
+
+An extra branch  [step-8/dnd](https://github.com/NoxFr/kotlin-htmx/tree/step-8/dnd) show how HTMX can add browser interaction (Drag & Drop)
 
 Step 1
 -
