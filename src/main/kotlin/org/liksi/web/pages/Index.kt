@@ -5,7 +5,7 @@ import kotlinx.html.*
 fun HTML.index() {
     head {
         title { +"Kotlin with HTMX" }
-        script(src = "https://unpkg.com/htmx.org@1.9.12") {}
+        script(src = "https://unpkg.com/htmx.org@2.0.4") {}
         script(src = "https://cdn.tailwindcss.com") {}
     }
     body {
