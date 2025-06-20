@@ -18,12 +18,12 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.ktor.htmx.html)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.html.builder)
     implementation(libs.ktor.server.cio)
     implementation(libs.ktor.server.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
-    implementation(libs.kotlinx.html)
     implementation(libs.logback.classic)
     implementation(libs.htmx.org)
     implementation(libs.tailwindcss)
