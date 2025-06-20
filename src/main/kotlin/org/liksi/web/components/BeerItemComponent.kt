@@ -1,13 +1,16 @@
 package org.liksi.web.components
 
+import io.ktor.htmx.html.*
 import kotlinx.html.*
 import org.liksi.api.model.Beer
 
 fun UL.beerItemComponent(beer: Beer) {
     li {
         classes = setOf("border-b-2 border-yellow-300 pb-4 cursor-pointer hover:bg-yellow-100")
-        attributes["hx-get"] = "/beer/${beer.id}"
-        attributes["hx-target"] = "#beer-detail"
+        attributes.hx {
+            get = "/beer/${beer.id}"
+            target = "#beer-detail"
+        }
         div {
             classes = setOf("font-semibold text-yellow-900")
             +"${beer.name} "
