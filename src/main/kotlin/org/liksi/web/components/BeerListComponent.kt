@@ -6,14 +6,14 @@ private val beerService = BeerService()
 
 fun DIV.beerListComponent() {
     div {
-        classes = setOf("bg-white shadow-md rounded-lg p-6")
+        classes = setOf("bg-yellow-50 shadow-lg rounded-lg p-8 border-t-4 border-yellow-500")
         h2 {
-            classes = setOf("text-2xl font-semibold text-gray-800 mb-4")
-            +"Liste des bières"
+            classes = setOf("text-3xl font-bold text-yellow-800 mb-6")
+            +"Our Beer Selection"
         }
 
         ul {
-            classes = setOf("space-y-2")
+            classes = setOf("space-y-4")
             beerService.getAllBeers().forEach { beer ->
                 beerItemComponent(beer)
             }
