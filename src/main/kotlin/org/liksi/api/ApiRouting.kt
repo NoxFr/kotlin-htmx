@@ -1,26 +1,19 @@
 package org.liksi.api
 
 import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
-import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.liksi.api.model.Beer
 
-val beerService: BeerService = BeerService()
-
 fun Application.configureApiRouting() {
-    install(ContentNegotiation) {
-        json()
-    }
 
     routing {
         route("/api") {
             route("/beers") {
                 get {
-                    call.respond(beerService.getAllBeers())
+                    call.respond(BeerService.getAllBeers())
                 }
 
                 get("/{id}") {
@@ -31,7 +24,7 @@ fun Application.configureApiRouting() {
                         return@get
                     }
 
-                    val beer = beerService.getBeerById(id)
+                    val beer = BeerService.getBeerById(id)
                     if (beer != null) {
                         call.respond(beer)
                     } else {
@@ -40,7 +33,7 @@ fun Application.configureApiRouting() {
                 }
                 post {
                     val beer = call.receive<Beer>()
-                    val createdBeer = beerService.addBeer(beer)
+                    val createdBeer = BeerService.addBeer(beer)
                     call.respond(HttpStatusCode.Created, createdBeer)
                 }
             }

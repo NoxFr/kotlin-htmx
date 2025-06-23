@@ -1,5 +1,8 @@
 package org.liksi.api.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Beer(
     val id: Int,
     val name: String,

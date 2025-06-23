@@ -3,6 +3,7 @@ kotlin-version = "2.1.20"
 ktor-version = "3.2.0"
 logback-version = "1.4.14"
 htmx-version = "2.0.4"
+htmx-json-enc-version = "2.0.2"
 tailwindcss-version = "4.0.14"
 
 [libraries]
@@ -15,9 +16,11 @@ ktor-htmx-html = { module = "io.ktor:ktor-htmx-html", version.ref = "ktor-versio
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host-jvm", version.ref = "ktor-version" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-version" }
-htmx-org = { module = "org.webjars.npm:htmx.org", version.ref = "htmx-version" }
+htmx = { module = "org.webjars.npm:htmx.org", version.ref = "htmx-version" }
+htmx-json-enc = { module = "org.webjars.npm:htmx-ext-json-enc", version.ref = "htmx-json-enc-version" }
 tailwindcss = { module = "org.webjars.npm:tailwindcss", version.ref = "tailwindcss-version" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-version" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor-version" }
