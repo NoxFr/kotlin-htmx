@@ -1,5 +1,6 @@
 package org.liksi.web.components
 
+import io.ktor.htmx.html.*
 import kotlinx.html.*
 import org.liksi.api.model.BeerStyle
 
@@ -16,9 +17,11 @@ fun DIV.beerCreationForm() {
         }
         form {
             classes = setOf("bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4")
-            attributes["hx-post"] = "/add-beer"
-            attributes["hx-target"] = "#beer-list"
-            attributes["hx-swap"] = "outerHTML"
+            attributes.hx{
+                post = "/add-beer"
+                target = "#beer-list"
+                swap = "outerHTML"
+            }
             attributes["hx-ext"] = "json-enc"
             div {
                 classes = setOf("mb-4")
